@@ -1,4 +1,4 @@
-#include <stdio.h>
+include <stdio.h>
 
 /**
 * main - Print all possible combinations of single digit numbers
@@ -7,17 +7,18 @@
 */
 int main(void)
 {
-	int number;
-	for (num = 0; num <= 10; num++)
-	{
-		putchar(num + '0');
-		if (num != 9)
+		int number;
+
+		for (number = 0; number <= 9; number++)
 		{
-			putchar(',');
-			putchar(' ');
+		putchar(number + '0');
+		if (number < 9)
+		{
+		putchar(',');
+		putchar(' ');
 		}
 		}
-	putchar('\n');
-	
+		putchar('\n');
+
 	return (0);
 }
