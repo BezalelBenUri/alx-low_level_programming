@@ -1,17 +1,19 @@
 #include "main.h"
 /**
-* print_square - function to print a square
-* @size: takes in the size of the square
+* print_triangle - prints a triangle
+* @size: takes in a integer for size of triangle
 */
-void print_square(int size)
+void print_triangle(int size)
 {
-	int i, j;
+	int row, column, k;
 
 	if (size <= 0)
 		_putchar('\n');
-	for (i = 0; i < size; i++)
+	for (row = 0; row < size; row++)
 	{
-		for (j = 0; j < size; j++)
+		for (column = size - row; column > 1; column--)
+			_putchar(' ');
+		for (k = row + column; k >= 1; k--)
 			_putchar('#');
 		_putchar('\n');
 	}
