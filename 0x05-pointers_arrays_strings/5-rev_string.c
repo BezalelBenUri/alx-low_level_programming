@@ -16,7 +16,7 @@ void rev_string(char *s)
 	begin = s;
 	end = s;
 	for (c = 0; c < length - 1; c++)
-		end++;	
+		end++;
 	/* Swap the characters of the string */
 	for (c = 0; c < length / 2; c++)
 	{
