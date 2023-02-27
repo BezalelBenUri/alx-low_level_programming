@@ -27,5 +27,5 @@ void rev_string(char *s)
 		/* Update pointers to point to the next character in the string */
 		begin++;
 		end--;
-  }
+	}
 }
