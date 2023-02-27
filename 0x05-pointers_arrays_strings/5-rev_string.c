@@ -12,8 +12,7 @@ void rev_string(char *s)
 	/* Find the length of the string */
 	while (s[length] != '\0')
 		length++;
-	/* Set the begin and end pointers to the start
-	 * * and end of the string */
+	/* Set the begin and end pointers to the start and end of the string */
 	begin = s;
 	end = s;
 	for (c = 0; c < length - 1; c++)
