@@ -16,8 +16,7 @@ void rev_string(char *s)
 	begin = s;
 	end = s;
 	for (c = 0; c < length - 1; c++)
-		end++;
-	
+		end++;	
 	/* Swap the characters of the string */
 	for (c = 0; c < length / 2; c++)
 	{
@@ -25,10 +24,8 @@ void rev_string(char *s)
 		*end = *begin;
 		*begin = temp;
 
-		/* Update pointers to point to the next
-		 * * * character in the string */
+		/* Update pointers to point to the next character in the string */
 		begin++;
 		end--;
   }
 }
-
