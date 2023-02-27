@@ -1,21 +1,25 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 
 int main(void)
 {
-    char password[16]; /* 15 characters plus null terminator */
-    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;':\",./<>?"; /* list of possible characters */
+    char password[16]; /* 15 characters + null terminator */
+    int i, sum, diff;
 
-    srand(time(NULL)); /* seed random number generator with current time */
+    srand(time(NULL));
 
-    for (int i = 0; i < 15; i++) {
-        password[i] = charset[rand() % (sizeof(charset) - 1)]; /* pick a random character from charset and add it to password */
+    /* Generate 15 printable ASCII characters*/
+    for (i = 0, sum = 0; i < 15; i++) {
+        password[i] = rand() % 94 + 32; /* printable ASCII range is 32 to 126 */
+        sum += password[i];
     }
-    password[15] = '\0'; /* add null terminator to end of password */
+
+    /* Adjust the sum to be equal to 2772 */
+    diff = sum - 2772;
+    password[14] -= diff;
 
     printf("%s", password);
 
     return 0;
 }
-
