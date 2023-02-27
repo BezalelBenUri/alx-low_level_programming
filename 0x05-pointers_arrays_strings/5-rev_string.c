@@ -27,10 +27,9 @@ void rev_string(char *s)
 		temp = *end;
 		*end = *begin;
 		*begin = temp;
-		
-		
-	/* Update pointers to point to the next
-     * character in the string */
+
+		/* Update pointers to point to the next
+		 * * * character in the string */
 		begin++;
 		end--;
   }
