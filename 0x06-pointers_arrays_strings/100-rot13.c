@@ -1,49 +1,28 @@
 #include "main.h"
+
 /**
- * print_number - print integer
- * Return: void
- * @n: number
+ * rot13 - Encodes a string using rot13.
+ * @s: The string to be encoded.
+ *
+ * Return: A pointer to the encoded string.
  */
-void print_number(int n)
+char *rot13(char *s)
 {
-	unsigned int size = n;
+	int i, j;
+	char original[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char encoded[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	int digits = 0;
-
-	int i;
-
-	if (n < 0)
-		size = -n;
-	if (n == 0)
-		digits = 1;
-
-	while (size >= 1)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		size = size / 10;
-		digits++;
+		for (j = 0; original[j] != '\0'; j++)
+		{
+			if (s[i] == original[j])
+			{
+				s[i] = encoded[j];
+				break;
+			}
+		}
 	}
 
-	for (i = 0; i < digits; i++)
-	{
-
-		int pow = 1;
-
-		int j;
-
-		int d;
-
-		for (j = 0; j < digits - i - 1; j++)
-		{
-			pow = pow * 10;
-		}
-
-		d = ((n / pow) % 10);
-		if (n < 0)
-		{
-			d = -d;
-			if (i == 0)
-				_putchar(45);
-		}
-		_putchar(48 + d);
-	}
+	return (s);
 }
