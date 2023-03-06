@@ -1,28 +1,40 @@
 #include "main.h"
+#define NULL 0
 
 /**
-* _strstr - locates a substring.
-* @haystack: char array
-* @needle: char array (keyword)
-*
-* Return: array
-*/
+ * _strstr - locate and return pointer to first occurence of substring
+ * @haystack: string to search
+ * @needle: target substring to search for
+ * Return: pointer to index of string at first occurence of whole substring
+ */
+
 char *_strstr(char *haystack, char *needle)
 {
-	while (*haystack != '\0')
-	{
-		char *duplicate = haystack;
+	int i = 0, j, x;
 
-		while (*haystack == *needle && *haystack != '\0' && *needle != '\0')
+	if (needle[0] == '\0')
+		return (haystack);
+
+	while (haystack[i] != '\0') /* iterate through haystack */
+	{
+		/* if a byte matches first char of needle */
+		/* interate through needle until match ends */
+		if (haystack[i] == needle[0])
 		{
-			needle++;
-			haystack++;
+			x = i, j = 0;
+			while (needle[j] != '\0')
+			{
+				if (haystack[x] == needle[j])
+					x++, j++;
+				else
+					break;
+			} /* if matched throughout, return haystack */
+			if (needle[j] == '\0')
+			{
+				return (haystack + i);
+			}
 		}
-		if (!*needle != '\0')
-		{
-			return (duplicate);
-		}
-		haystack++;
+		i++;
 	}
-	return (0);
+	return (NULL); /* No match */
 }
