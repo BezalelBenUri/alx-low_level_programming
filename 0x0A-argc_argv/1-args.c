@@ -9,6 +9,8 @@
  */
 int main(int argc, char *argv[])
 {
+/* to suppress unused variable warning */
+	argv = argv;
 	printf("%d\n", argc - 1);
 	return (0);
 }
