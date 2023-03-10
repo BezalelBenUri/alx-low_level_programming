@@ -1,32 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+/**
+ * main - prints the minimum number of coins to make change for a given amount
+ * @argc: arguement count
+ * @argv: array of pointers to arguement strings
+ * Return: number of coins or 1
+ **/
 int main(int argc, char *argv[])
 {
-	int cents, coins = 0;
-	int values[] = {25, 10, 5, 2, 1}; // array of coin values
-	
-	// check if there is exactly one argument
-	if (argc != 2) {
+	int amount, coins;
+
+	if (argc != 2)
+	{
 		printf("Error\n");
-		return 1;
+		return (1);
 	}
-	
-	// convert argument to integer using atoi
-	cents = atoi(argv[1]);
-	
-	// if cents is negative, print 0 and return
-	if (cents < 0) {
-		printf("0\n");
-		return 0;
+	amount = atoi(argv[1]);
+	coins = 0;
+	if (amount > 25)
+	{
+		while (amount >= 25)
+			amount -= 25, coins++;
 	}
-	// loop through coin values, adding the number of times each coin fits
-	// into the remaining cents to the total number of coins
-	for (int i = 0; i < 5; i++) {
-		coins += cents / values[i];
-		cents = cents % values[i];
+	if (amount > 10 && amount < 25)
+	{
+		while (amount >= 10)
+			amount -= 10, coins++;
 	}
-	// print the total number of coins
+	if (amount > 5 && amount < 10)
+	{
+		while (amount >= 5)
+			amount -= 5, coins++;
+	}
+	if (amount > 2 && amount < 5)
+	{
+		while (amount >= 2)
+			amount -= 2, coins++;
+	}
+	if (amount == 1 || amount == 2 || amount == 5 || amount == 10 || amount == 25)
+	{
+		coins++;
+	}
 	printf("%d\n", coins);
-	return 0;
+	return (0);
 }
