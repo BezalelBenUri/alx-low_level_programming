@@ -11,5 +11,7 @@ char *argstostr(int ac, char **av);
 char **strtow(char *str);
 int number(char *str);
 void free_everything(char **string, int i);
+int word_len(char *str);
+int count_words(char *str);
 
 #endif /* MAIN_H */
