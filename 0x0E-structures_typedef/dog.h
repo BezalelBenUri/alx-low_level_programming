@@ -13,3 +13,4 @@ struct dog
 	char age;
 	char * owner;
 };
+#endif
