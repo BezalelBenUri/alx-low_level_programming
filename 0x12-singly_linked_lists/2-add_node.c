@@ -1,48 +1,62 @@
-#include "lists.h"
 #include <stdlib.h>
-/**
- * _strlen - gets length of the string
- * @s: string
- * Return: length of the string
- */
-int _strlen(const char *s)
-{
-	int i;
+#include "lists.h"
 
-	for (i = 0; s[i]; i++)
-		;
-	return (i);
-}
 /**
- * add_node - add new nodes to the list
- * @head: current place in the list
- * @str: string to add to the head
- * Return: pointer to current position in list
+ * add_node - function with two arguments
+ * @head: double pointer to linked list
+ * @str: string pointer
+ *
+ * Description: adds a new node at the beginning
+ * Return: address of new element
  */
 list_t *add_node(list_t **head, const char *str)
 {
-	int i, len;
-	char *content;
-	list_t *new;
+	int count = 0;
+	list_t *temp;
 
-	if (str == NULL || head == NULL)
+	temp = malloc(sizeof(list_t));
+	if (temp == NULL)
 		return (NULL);
-	len = _strlen(str);
-	new = *head;
-	content = malloc((len + 1) * sizeof(char));
-	if (content == NULL)
+	temp->str = _strdup(str);
+	while (str[count] != '\0')
+		count++;
+	temp->len = count;
+	temp->next = *head;
+	*head = temp;
+	return (temp);
+}
+
+/**
+ * *_strdup - function with one argument
+ * @str: string argument
+ *
+ * Description: returns a pointer to allocated space in memory
+ * Return: pointer
+ */
+char *_strdup(const char *str)
+{
+	int i, j;
+	char *ptr;
+
+	if (str == NULL)
 		return (NULL);
-	for (i = 0; str[i]; i++)
-		content[i] = str[i];
-	new = malloc(sizeof(list_t));
-	if (new == NULL)
+	i = 0;
+	while (*(str + i) != '\0')
 	{
-		free(content);
-		return (NULL);
+		i++;
 	}
-	new->str = content;
-	new->len = len;
-	new->next = *head;
-	*head = new;
-	return (new);
+
+	ptr = malloc(sizeof(char) * i + 1);
+
+	if (ptr == NULL)
+		return (NULL);
+
+	j = 0;
+	while (str[j] != '\0')
+	{
+		ptr[j] = str[j];
+		j++;
+	}
+	ptr[j] = '\0';
+	return (ptr);
 }
