@@ -8,13 +8,15 @@
  */
 int main(int argc, char *argv[])
 {
+	int result;
+
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
 		exit(97);
 	}
 
-	int result = copy_file(argv[1], argv[2]);
+	result = copy_file(argv[1], argv[2]);
 
 	return (result);
 }
@@ -37,7 +39,7 @@ int copy_file(const char *file_from, const char *file_to)
 		print_error_and_exit("Error: Can't read from file", file_from, 98);
 	}
 
-	file_to_fd = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR |
+	file_to_file = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR |
 			S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file_to_file == -1)
 	{
