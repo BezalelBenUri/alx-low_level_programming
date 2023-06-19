@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Get the list of all .c files in the current directory
-c_files=$(find . -name "*.c")
+# Compile all .c files into object files
+gcc -c -fPIC *.c
 
-# Create a dynamic library called liball.so
-gcc -fPIC -shared -o liball.so $c_files
+# Create the dynamic library
+gcc -shared -o liball.so *.o
 
-# Print a success message
-echo "Successfully created liball.so"
+# Clean up object files
+rm *.o
