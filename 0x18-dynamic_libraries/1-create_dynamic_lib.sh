@@ -1,10 +1,3 @@
 #!/bin/bash
-
-# Compile all .c files into object files
-gcc -c -fPIC *.c
-
-# Create the dynamic library
-gcc -shared -o liball.so *.o
-
-# Clean up object files
-rm *.o
+gcc -fPIC -g -c -Wall -pedantic -Werror -Wextra *.c
+gcc -shared -Wl,-soname,liball.so -o liball.so *.o -lc
