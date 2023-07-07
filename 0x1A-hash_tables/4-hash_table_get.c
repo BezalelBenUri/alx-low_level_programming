@@ -7,8 +7,7 @@
  * @ht: The hash table to look into
  * @key: The key to search for
  *
- * Return: The value associated with the element,
- * or NULL if key couldn't be found
+ * Return: The value associated with the element, or NULL if key couldn't be found
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
@@ -21,7 +20,6 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	index = key_index((const unsigned char *)key, ht->size);
 	temp = ht->array[index];
 
-	/* Traverse the linked list at the given index */
 	while (temp != NULL)
 	{
 		if (strcmp(temp->key, key) == 0)
