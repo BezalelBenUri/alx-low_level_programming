@@ -12,9 +12,9 @@ void hash_table_print(const hash_table_t *ht)
 	if (ht != NULL)
 	{
 		printf("{");
-		for (cont = 0; cont < ht->size; cont++)
+		for (apex = 0; apex < ht->size; apex++)
 		{
-			node = ht->array[cont];
+			node = ht->array[apex];
 			while (node != NULL)
 			{
 				if (i != 0)
