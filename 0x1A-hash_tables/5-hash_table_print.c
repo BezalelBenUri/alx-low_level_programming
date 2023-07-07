@@ -1,29 +1,29 @@
 #include "hash_tables.h"
-
 /**
- * hash_table_get - Retrieve the value associated with
- *                  a key in a hash table.
- * @ht: A pointer to the hash table.
- * @key: The key to get the value of.
+ *hash_table_print - function that prints a hash table
  *
- * Return: If the key cannot be matched - NULL.
- *         Otherwise - the value associated with key in ht.
+ *@ht: is the hash table
  */
-char *hash_table_get(const hash_table_t *ht, const char *key)
+void hash_table_print(const hash_table_t *ht)
 {
 	hash_node_t *node;
-	unsigned long int tab_index;
+	unsigned long int apex = 0, i = 0;
 
-	if (ht == NULL || key == NULL || *key == '\0')
-		return (NULL);
-
-	tab_index = key_index((const unsigned char *)key, ht->size);
-	if (tab_index >= ht->size)
-		return (NULL);
-
-	node = ht->array[tab_index];
-	while (node && strcmp(node->key, key) != 0)
-		node = node->next;
-
-	return ((node == NULL) ? NULL : node->value);
+	if (ht != NULL)
+	{
+		printf("{");
+		for (cont = 0; cont < ht->size; cont++)
+		{
+			node = ht->array[cont];
+			while (node != NULL)
+			{
+				if (i != 0)
+					printf(", ");
+				i = 1;
+				printf("'%s': '%s'", node->key, node->value);
+				node = node->next;
+			}
+		}
+		printf("}\n");
+	}
 }
