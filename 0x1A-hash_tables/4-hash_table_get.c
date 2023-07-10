@@ -17,7 +17,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	if (ht == NULL || key == NULL || *key == '\0')
 		return (NULL);
 
-	adrs = key_adrs((const unsigned char *)key, ht->size);
+	adrs = key_index((const unsigned char *)key, ht->size);
 	if (adrs >= ht->size)
 		return (NULL);
 
