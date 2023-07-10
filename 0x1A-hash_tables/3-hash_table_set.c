@@ -11,7 +11,7 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new;
+	hash_node_t *recent;
 	char *val_cp;
 	unsigned long int index, i;
 
@@ -33,21 +33,21 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 	}
 
-	new = malloc(sizeof(hash_node_t));
-	if (new == NULL)
+	recent = malloc(sizeof(hash_node_t));
+	if (recent == NULL)
 	{
 		free(val_cp);
 		return (0);
 	}
-	new->key = strdup(key);
-	if (new->key == NULL)
+	recent->key = strdup(key);
+	if (recent->key == NULL)
 	{
-		free(new);
+		free(recent);
 		return (0);
 	}
-	new->value = val_cp;
-	new->next = ht->array[index];
-	ht->array[index] = new;
+	recent->value = val_cp;
+	recent->next = ht->array[index];
+	ht->array[index] = recent;
 
 	return (1);
 }
