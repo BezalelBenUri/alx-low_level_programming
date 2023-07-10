@@ -9,7 +9,7 @@
  */
 void hash_table_print(const hash_table_t *ht)
 {
-	hash_brch_t *brch;
+	hash_node_t *brch;
 	unsigned long int i;
 	unsigned char indicator = 0;
 
