@@ -11,7 +11,7 @@
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	hash_branch_t *branch;
+	hash_node_t *node;
 	unsigned long int adrs;
 
 	if (ht == NULL || key == NULL || *key == '\0')
@@ -21,9 +21,9 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	if (adrs >= ht->size)
 		return (NULL);
 
-	branch = ht->array[adrs];
-	while (branch && strcmp(branch->key, key) != 0)
-		branch = branch->next;
+	node = ht->array[adrs];
+	while (node && strcmp(node->key, key) != 0)
+		node = node->next;
 
-	return ((branch == NULL) ? NULL : branch->value);
+	return ((node == NULL) ? NULL : node->value);
 }
