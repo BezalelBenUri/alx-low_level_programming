@@ -14,26 +14,40 @@
   */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t in, lf, d;
+	int left = 0;           /* Left bound of the search range*/
+	int right = size - 1;   /* Right bound of the search range*/
+	int med;
+	size_t i;
 
 	if (array == NULL)
 		return (-1);
 
-	for (lf = 0, d = size - 1; d >= lf;)
+	while (left <= right)
 	{
-		printf("Searching input array: ");
-		for (in = lf; in < d; in++)
-			printf("%d, ", array[in]);
-		printf("%d\n", array[in]);
+		mid = left + (right - left) / 2; /* Calculate the middle index*/
 
-		i = lf + (d - lf) / 2;
-		if (array[i] == value)
-			return (i);
-		if (array[i] > value)
-			d = i - 1;
+		printf("Searching in array: ");
+		for (i = left; i <= right; i++)
+		{
+			printf("%d", array[i]);
+			if (i < right)
+			{
+				printf(", ");
+			}
+		}
+		printf("\n");
+
+		if (array[mid] == value)
+		{
+			return (mid); /* Value found, return its index*/
+		} else if (array[mid] < value)
+		{
+			left = mid + 1; /* Adjust the left bound*/
+		}
 		else
-			lf = i + 1;
+		{
+			right = mid - 1; /* Adjust the right bound*/
+		}
 	}
-
 	return (-1);
 }
